@@ -54,3 +54,13 @@ class BowlingTest(unittest.TestCase):
         score = self.test_scorer.get_score()
 
         self.assertEqual(score, 46)
+
+    def test_can_print_score_from_full_match_with_bonus_rolls(self):
+        # first 9 frames : 45 points
+        # 10th frame : 10 points (strike)
+        # two bonus rolls : 5 + 5 points
+        # total should equal to 65
+        self.test_scorer.set_frames("32 32 32 32 32 32 32 32 32 X 32 32")
+        score = self.test_scorer.get_score()
+
+        self.assertEqual(score, 65)

@@ -42,3 +42,9 @@ class BowlingTest(unittest.TestCase):
         score = self.test_scorer.get_score()
 
         self.assertEqual(score, 30)
+
+    def test_can_print_score_from_list_of_frames_strike(self):
+        self.test_scorer.set_frames("X 32 32")
+        score = self.test_scorer.get_score()
+
+        self.assertEqual(score, 30)

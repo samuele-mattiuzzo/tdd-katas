@@ -19,6 +19,11 @@ class BowlingScorer:
         for idx, frame in enumerate(all_frames):
             if frame == "X":
                 score += 10
+                if idx < len(all_frames) - 2:
+                    first_frame = all_frames[idx + 1]
+                    second_frame = all_frames[idx + 2]
+                    score += self.sum_frame(first_frame)
+                    score += self.sum_frame(second_frame)
             elif "/" in frame:
                 score += 10
                 if idx < len(all_frames) - 1:

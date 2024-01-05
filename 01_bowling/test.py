@@ -38,13 +38,19 @@ class BowlingTest(unittest.TestCase):
         self.assertEqual(score, 25)
 
     def test_can_print_score_from_list_of_frames_spare(self):
-        self.test_scorer.set_frames("46 3/ 32")
+        self.test_scorer.set_frames("32 3/ 32")
         score = self.test_scorer.get_score()
 
-        self.assertEqual(score, 30)
+        self.assertEqual(score, 23)
 
     def test_can_print_score_from_list_of_frames_strike(self):
         self.test_scorer.set_frames("X 32 32")
         score = self.test_scorer.get_score()
 
-        self.assertEqual(score, 30)
+        self.assertEqual(score, 25)
+
+    def test_can_print_score_from_full_match(self):
+        self.test_scorer.set_frames("X 45 4/ 32")
+        score = self.test_scorer.get_score()
+
+        self.assertEqual(score, 46)

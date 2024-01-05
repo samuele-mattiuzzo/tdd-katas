@@ -55,8 +55,19 @@ class BowlingScorer:
         score = 0
 
         for idx, frame in enumerate(all_frames):
-            score += self.parse_frame_to_score(frame)
-            score += self.check_spare(frame, idx, all_frames)
-            score += self.check_strike(frame, idx, all_frames)
+            frame_score = self.parse_frame_to_score(frame)
+            score += frame_score
+
+            if idx < 9:
+                # only check for next shots if these are the first 9
+                # rolls; on 10th, we just add the value of 11th and 12th
+                # rather than using standard spare/strike rules
+                score += self.check_spare(frame, idx, all_frames)
+                score += self.check_strike(frame, idx, all_frames)
+
+            if idx == 9 and not ("X" in frame or "/" in frame):
+                # simple check for bonus rolls, return if it wasn't a strike
+                # or a spare
+                return
 
         return score

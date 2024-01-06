@@ -27,3 +27,38 @@ class WordleTest(unittest.TestCase):
         self.test_wordle.check_wordle("abcaa", "acbax")
         result = self.test_wordle.get_result()
         self.assertEqual(result, "21120")
+
+    def test_no_matching_chars(self):
+        target = "ropes"
+        guess = "child"
+        result = "00000"
+        self.test_wordle.check_wordle(target, guess)
+        self.assertEqual(result, self.test_wordle.get_result())
+
+    def test_char_match_correct_pos(self):
+        target = "alert"
+        guess = "alarm"
+        result = "22020"
+        self.test_wordle.check_wordle(target, guess)
+        self.assertEqual(result, self.test_wordle.get_result())
+
+    def test_char_match_wrong_pos(self):
+        target = "stair"
+        guess = "chore"
+        result = "00010"
+        self.test_wordle.check_wordle(target, guess)
+        self.assertEqual(result, self.test_wordle.get_result())
+
+    def test_mix_wrong_right_pos(self):
+        target = "hairy"
+        guess = "charm"
+        result = "01120"
+        self.test_wordle.check_wordle(target, guess)
+        self.assertEqual(result, self.test_wordle.get_result())
+
+    def test_multiple_wrong_pos(self):
+        target = "reads"
+        guess = "elect"
+        result = "10000"
+        self.test_wordle.check_wordle(target, guess)
+        self.assertEqual(result, self.test_wordle.get_result())

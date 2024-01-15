@@ -14,18 +14,18 @@ class Mumble:
         self.converted = []
         self.result = ''
 
-    def _convert_repeats(self):
+    def __convert_repeats(self):
         for pos, letter in enumerate(self.input):
             self.converted.append(
                 letter.lower() * (pos + 1)
             )
 
-    def _capitalize_converted(self):
+    def __capitalize_converted(self):
         self.converted = [
             seq.capitalize() for seq in self.converted
         ]
 
-    def _format_converted(self):
+    def __format_converted(self):
         self.result = "-".join(self.converted)
 
     def mumble_letters(self, sequence):
@@ -37,8 +37,8 @@ class Mumble:
 
         self.input = sequence
 
-        self._convert_repeats()
-        self._capitalize_converted()
-        self._format_converted()
+        self.__convert_repeats()
+        self.__capitalize_converted()
+        self.__format_converted()
 
         return self.result

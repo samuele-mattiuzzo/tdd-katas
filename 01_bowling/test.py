@@ -64,3 +64,7 @@ class BowlingTest(unittest.TestCase):
         score = self.test_scorer.get_score()
 
         self.assertEqual(score, 65)
+
+
+if __name__ == '__main__':
+    unittest.main()

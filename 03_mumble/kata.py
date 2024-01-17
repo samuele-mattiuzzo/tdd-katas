@@ -4,12 +4,9 @@ class Mumble:
 
     def __init__(self, *args, **kwargs):
         super(Mumble, self).__init__(*args, **kwargs)
+        self._setInitialState()
 
-        self.input = ''
-        self.converted = []
-        self.result = ''
-
-    def clean(self):
+    def _setInitialState(self):
         self.input = ''
         self.converted = []
         self.result = ''
